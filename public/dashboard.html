@@ -7,25 +7,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000000;--bg2:#0a0a0a;--surface:#111111;--surface2:#1a1a1a;--border:#2a2a2a;--border-light:#3a3a3a;--text:#e0e0e0;--text-dim:#888888;--text-muted:#555555;--accent:#888888;--accent-light:#aaaaaa;--accent-glow:rgba(255,255,255,0.06);--green:#aaaaaa;--green-dim:rgba(170,170,170,0.1);--red:#cccccc;--red-dim:rgba(204,204,204,0.1);--orange:#999999;--orange-dim:rgba(153,153,153,0.1);--yellow:#bbbbbb;--cyan:#aaaaaa;--purple:#999999;--radius:12px;--radius-sm:8px;--shadow:0 4px 24px rgba(0,0,0,0.5);--transition:0.2s cubic-bezier(0.4,0,0.2,1)}
+:root{--bg:#0a0a0f;--bg2:#111118;--surface:#18181f;--surface2:#1e1e28;--border:#2a2a3a;--border-light:#3a3a4f;--text:#e4e4ef;--text-dim:#8888a0;--text-muted:#5a5a72;--accent:#6366f1;--accent-light:#818cf8;--accent-glow:rgba(99,102,241,0.15);--green:#22c55e;--green-dim:rgba(34,197,94,0.12);--red:#ef4444;--red-dim:rgba(239,68,68,0.12);--orange:#f59e0b;--orange-dim:rgba(245,158,11,0.12);--yellow:#eab308;--cyan:#06b6d4;--purple:#a855f7;--radius:12px;--radius-sm:8px;--shadow:0 4px 24px rgba(0,0,0,0.3);--transition:0.2s cubic-bezier(0.4,0,0.2,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
 .app{display:flex;min-height:100vh}
 .sidebar{width:260px;min-width:260px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto}
-.sidebar-brand{padding:16px 20px 14px;border-bottom:1px solid var(--border)}
-.sidebar-brand h1{font-size:18px;font-weight:700;display:flex;align-items:center;gap:12px;letter-spacing:-0.3px}
-.sidebar-brand .version{font-size:10px;color:var(--text-muted);margin-top:4px;padding-left:104px;font-weight:500;letter-spacing:0.5px}
+.sidebar-brand{padding:20px 20px 16px;border-bottom:1px solid var(--border)}
+.sidebar-brand h1{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;letter-spacing:-0.3px}
+.sidebar-brand h1 span{font-size:22px}
+.sidebar-brand .version{font-size:10px;color:var(--text-muted);margin-top:2px;padding-left:30px;font-weight:500;letter-spacing:0.5px}
 .sidebar-nav{padding:12px;flex:1}
 .nav-section{margin-bottom:16px}
 .nav-section-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:8px 12px 4px}
 .nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text-dim);cursor:pointer;transition:all var(--transition);border:none;background:none;width:100%;text-align:left;font-family:inherit}
 .nav-item:hover{background:var(--surface);color:var(--text)}
 .nav-item.active{background:var(--accent-glow);color:var(--accent-light)}
-.nav-item .nav-icon{font-size:16px;width:20px;text-align:center;filter:grayscale(100%);}
+.nav-item .nav-icon{font-size:16px;width:20px;text-align:center}
 .nav-item .nav-badge{margin-left:auto;background:var(--surface2);color:var(--text-dim);font-size:10px;font-weight:600;padding:1px 7px;border-radius:10px}
-.sidebar-status{padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-muted);filter:grayscale(100%);}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--text);box-shadow:0 0 8px rgba(255,255,255,0.3);animation:pulse 2s infinite}
+.sidebar-status{padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-muted)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(34,197,94,0.4);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .main{flex:1;margin-left:260px;display:flex;flex-direction:column;min-height:100vh}
 .topbar{padding:16px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
@@ -35,22 +36,18 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .content{padding:28px 32px;flex:1}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;border:1px solid transparent;transition:all var(--transition);font-family:inherit;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-primary:hover{background:var(--accent-light);box-shadow:0 2px 12px rgba(255,255,255,0.15)}
+.btn-primary:hover{background:var(--accent-light);box-shadow:0 2px 12px rgba(99,102,241,0.3)}
 .btn-primary:disabled{opacity:0.5;cursor:not-allowed;box-shadow:none}
 .btn-ghost{background:transparent;color:var(--text-dim);border-color:var(--border)}
 .btn-ghost:hover{background:var(--surface);color:var(--text)}
 .btn-success{background:var(--green-dim);color:var(--green);border-color:rgba(34,197,94,0.2)}
 .btn-success:hover{background:rgba(34,197,94,0.2)}
 .btn-sm{padding:5px 10px;font-size:12px}
-.btn-danger{background:var(--red-dim);color:var(--red);border-color:rgba(239,68,68,0.2)}
-.btn-danger:hover{background:rgba(239,68,68,0.2)}
-.btn-warning{background:var(--orange-dim);color:var(--orange);border-color:rgba(245,158,11,0.2)}
-.btn-warning:hover{background:rgba(245,158,11,0.2)}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .card-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .card-header h3{font-size:13px;font-weight:600;letter-spacing:-0.1px}
 .card-body{padding:18px}
-.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:24px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:all var(--transition)}
 .stat-card:hover{border-color:var(--border-light)}
 .stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted)}
@@ -58,7 +55,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .stat-sub{font-size:11px;color:var(--text-muted);margin-top:4px}
 .repo-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition);border:1px solid transparent}
 .repo-item:hover{background:var(--surface2)}
-.repo-item.selected{background:var(--accent-glow);border-color:rgba(255,255,255,0.2)}
+.repo-item.selected{background:var(--accent-glow);border-color:rgba(99,102,241,0.3)}
 .repo-icon{font-size:18px}
 .repo-info{flex:1;min-width:0}
 .repo-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -72,7 +69,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .col-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .pr-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition);border:1px solid transparent}
 .pr-item:hover{background:var(--surface2)}
-.pr-item.selected{background:var(--accent-glow);border-color:rgba(255,255,255,0.2)}
+.pr-item.selected{background:var(--accent-glow);border-color:rgba(99,102,241,0.3)}
 .pr-number{font-size:12px;font-weight:600;color:var(--accent-light);min-width:40px}
 .pr-info{flex:1;min-width:0}
 .pr-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -98,7 +95,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .log-entry.warn .log-msg{color:var(--orange)}
 .finding-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-bottom:10px;transition:all var(--transition)}
 .finding-card:hover{border-color:var(--border-light)}
-.finding-card.approved{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.03)}
+.finding-card.approved{border-color:rgba(34,197,94,0.3);background:rgba(34,197,94,0.04)}
 .finding-card.rejected{opacity:0.45}
 .finding-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .finding-sev{font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:0.5px}
@@ -115,18 +112,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .finding-section-body{font-size:12px;line-height:1.6;color:var(--text-dim)}
 .finding-section-body pre{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px;font-size:11px;overflow-x:auto;margin-top:4px;white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',monospace}
 .finding-actions{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
-.prompt-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;resize:vertical;min-height:60px;transition:border-color var(--transition)}
-.prompt-input:focus{outline:none;border-color:var(--text-dim)}
-.prompt-input::placeholder{color:var(--text-muted)}
-.state-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.5px}
-.state-pending_review{background:rgba(245,158,11,0.15);color:var(--orange)}
-.state-done{background:rgba(34,197,94,0.15);color:var(--green)}
-.state-failed{background:rgba(239,68,68,0.15);color:var(--red)}
-.state-rejected{background:rgba(136,136,160,0.15);color:var(--text-muted)}
-.state-publishing{background:rgba(99,102,241,0.15);color:var(--accent-light)}
 .confidence-bar{height:3px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
 .confidence-fill{height:100%;border-radius:2px;transition:width 0.5s}
-.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--text);border-radius:50%;animation:spin 0.6s linear infinite}
+.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty{text-align:center;padding:48px 24px}
 .empty-icon{font-size:36px;margin-bottom:12px;opacity:0.5}
@@ -134,173 +122,17 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .empty-text{font-size:12px;color:var(--text-muted)}
 .page{display:none}
 .page.active{display:block}
-/* Force all emoji/icons to grayscale */
-.nav-icon,.empty-icon,.finding-sev,.state-badge,.pr-draft,.log-stage,.sidebar-status,.sidebar-brand h1{filter:grayscale(100%);}
-.logo-img{display:block;border-radius:10px;object-fit:contain;flex-shrink:0;image-rendering:auto;filter:grayscale(100%) contrast(1.2)}
-.logo-sidebar{width:90px;height:90px;border-radius:14px;object-fit:cover;filter:grayscale(100%) contrast(1.3) brightness(1.1)}
-.logo-topbar{width:72px;height:72px;border-radius:12px;object-fit:cover;filter:grayscale(100%) contrast(1.2)}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 @media(max-width:1100px){.three-col{grid-template-columns:260px 260px 1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.sidebar{width:60px;min-width:60px}.sidebar-brand h1 span:last-child,.sidebar-brand .version,.nav-section-title,.nav-item span:not(.nav-icon),.nav-badge{display:none}.nav-item{justify-content:center;padding:10px}.main{margin-left:60px}.three-col{grid-template-columns:1fr}}
 </style>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  var canvas=document.getElementById('matrix-canvas');
-  if(!canvas)return;
-  var ctx=canvas.getContext('2d');
-  var w,h,cols,dots,chars;
-  chars='01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-  chars=chars.split('');
-  function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;cols=Math.floor(w/14);dots=[];for(var i=0;i<cols;i++){dots[i]={y:Math.random()*-h,speed:2+Math.random()*4,len:8+Math.floor(Math.random()*18)};}}
-  function draw(){
-    ctx.fillStyle='rgba(0,0,0,0.08)';
-    ctx.fillRect(0,0,w,h);
-    ctx.font='14px "JetBrains Mono", monospace';
-    for(var i=0;i<dots.length;i++){
-      var d=dots[i];
-      for(var j=0;j<d.len;j++){
-        var char=chars[Math.floor(Math.random()*chars.length)];
-        var y=d.y-j*14;
-        if(y>0&&y<h){
-          var alpha=j===0?1:Math.max(0,1-j/d.len);
-          var tail=Math.floor(200+(1-j/d.len)*55);
-          ctx.fillStyle=j===0?'rgba(255,255,255,'+alpha+')':'rgba('+tail+','+tail+','+tail+','+(alpha*0.8)+')';
-          ctx.fillText(char,i*14,y);
-        }
-      }
-      d.y+=d.speed;
-      if(d.y-d.len*14>h){d.y=Math.random()*-h;d.speed=2+Math.random()*4;d.len=8+Math.floor(Math.random()*18);}
-    }
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize',resize);
-  resize();
-  draw();
-});
-
-document.addEventListener('DOMContentLoaded',function(){
-// ── PIN Lock ──
-(function(){
-  var PIN='0759';
-  var entered='';
-  var lockScreen=document.getElementById('pin-lock');
-  var dots=document.querySelectorAll('#pin-dots .pin-dot');
-  var errorEl=document.getElementById('pin-error');
-  if(!lockScreen)return;
-  document.getElementById('pin-lock').style.zIndex='9999';
-
-  function updateDots(){
-    for(var i=0;i<4;i++){
-      if(i<entered.length){dots[i].style.background='#e0e0e0';dots[i].style.borderColor='#e0e0e0';}
-      else{dots[i].style.background='transparent';dots[i].style.borderColor='#555';}
-    }
-  }
-
-  function showError(){
-    errorEl.style.opacity='1';
-    for(var i=0;i<dots.length;i++){dots[i].style.borderColor='var(--red)';dots[i].style.background='rgba(204,204,204,0.2)';}
-    setTimeout(function(){
-      errorEl.style.opacity='0';
-      entered='';
-      updateDots();
-    },1200);
-  }
-
-  function unlock(){
-    lockScreen.style.transition='opacity 0.5s, transform 0.5s';
-    lockScreen.style.opacity='0';
-    lockScreen.style.transform='scale(1.05)';
-    setTimeout(function(){lockScreen.style.display='none';},500);
-  }
-
-  document.querySelectorAll('.pin-btn').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var digit = this.getAttribute('data-digit');
-      if(digit==='clear'){
-        entered='';
-        updateDots();
-      }else if(digit==='back'){
-        entered=entered.slice(0,-1);
-        updateDots();
-      }else{
-        if(entered.length<4){
-          entered+=digit;
-          updateDots();
-          if(entered.length===4){
-            if(entered===PIN){
-              unlock();
-            }else{
-              showError();
-            }
-          }
-        }
-      }
-    });
-    btn.addEventListener('mousedown',function(){this.style.background='var(--surface2)';this.style.transform='scale(0.95)';});
-    btn.addEventListener('mouseup',function(){this.style.background='var(--surface)';this.style.transform='scale(1)';});
-    btn.addEventListener('mouseleave',function(){this.style.background='var(--surface)';this.style.transform='scale(1)';});
-  });
-
-  // Keyboard support
-  document.addEventListener('keydown',function(e){
-    if(lockScreen.style.display==='none') return;
-    if(e.key>='0'&&e.key<='9'){
-      if(entered.length<4){
-        entered+=e.key;
-        updateDots();
-        if(entered.length===4){
-          if(entered===PIN){unlock();}
-          else{showError();}
-        }
-      }
-    }else if(e.key==='Backspace'){
-      entered=entered.slice(0,-1);
-      updateDots();
-    }else if(e.key==='Escape'){
-      entered='';
-      updateDots();
-    }
-  });
-})();
-});
-</script>
 </head>
 <body>
-<!-- PIN LOCK SCREEN -->
-<div id="pin-lock" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
-    <img src="/anti_ai-logo.png" alt="Anti-AI" style="width:72px;height:72px;border-radius:14px;object-fit:cover;filter:grayscale(100%) contrast(1.3) brightness(1.1);">
-    <div style="font-size:14px;font-weight:600;color:var(--text);letter-spacing:2px;text-transform:uppercase;">Enter PIN</div>
-    <div id="pin-dots" style="display:flex;gap:16px;">
-      <div class="pin-dot" style="width:14px;height:14px;border-radius:50%;border:2px solid var(--text-dim);background:transparent;transition:all 0.2s;"></div>
-      <div class="pin-dot" style="width:14px;height:14px;border-radius:50%;border:2px solid var(--text-dim);background:transparent;transition:all 0.2s;"></div>
-      <div class="pin-dot" style="width:14px;height:14px;border-radius:50%;border:2px solid var(--text-dim);background:transparent;transition:all 0.2s;"></div>
-      <div class="pin-dot" style="width:14px;height:14px;border-radius:50%;border:2px solid var(--text-dim);background:transparent;transition:all 0.2s;"></div>
-    </div>
-    <div id="pin-error" style="font-size:12px;color:var(--red);height:16px;opacity:0;transition:opacity 0.3s;">Incorrect PIN</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
-      <button class="pin-btn" data-digit="1" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">1</button>
-      <button class="pin-btn" data-digit="2" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">2</button>
-      <button class="pin-btn" data-digit="3" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">3</button>
-      <button class="pin-btn" data-digit="4" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">4</button>
-      <button class="pin-btn" data-digit="5" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">5</button>
-      <button class="pin-btn" data-digit="6" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">6</button>
-      <button class="pin-btn" data-digit="7" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">7</button>
-      <button class="pin-btn" data-digit="8" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">8</button>
-      <button class="pin-btn" data-digit="9" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">9</button>
-      <button class="pin-btn" data-digit="clear" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:inherit;">✕</button>
-      <button class="pin-btn" data-digit="0" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:22px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit;">0</button>
-      <button class="pin-btn" data-digit="back" style="width:64px;height:64px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:inherit;">⌫</button>
-    </div>
-  </div>
-</div>
-
-<canvas id="matrix-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.35"></canvas>
-<div class="app" style="position:relative;z-index:1;">
+<div class="app">
 <aside class="sidebar">
-  <div class="sidebar-brand"><h1 style="gap:14px;"><img src="/anti_ai-logo.png" alt="Anti-AI" class="logo-img logo-sidebar"><span>ReviewBot</span></h1><div class="version">v1.0 — AI Code Review</div></div>
+  <div class="sidebar-brand"><h1><span>🤖</span><span>ReviewBot</span></h1><div class="version">v1.0 — AI Code Review</div></div>
   <nav class="sidebar-nav">
     <div class="nav-section">
       <div class="nav-section-title">Main</div>
@@ -311,14 +143,6 @@ document.addEventListener('DOMContentLoaded',function(){
       <div class="nav-section-title">Activity</div>
       <button class="nav-item" onclick="showPage('history')" id="nav-history"><span class="nav-icon">📋</span><span>Review History</span><span class="nav-badge" id="history-count">0</span></button>
     </div>
-    <div class="nav-section">
-      <div class="nav-section-title">Workspace</div>
-      <button class="nav-item" onclick="showPage('branches')" id="nav-branches"><span class="nav-icon">🌿</span><span>Branch Editor</span></button>
-    </div>
-    <div class="nav-section">
-      <div class="nav-section-title">Configuration</div>
-      <button class="nav-item" onclick="showPage('settings')" id="nav-settings"><span class="nav-icon">⚙️</span><span>LLM Settings</span></button>
-    </div>
   </nav>
   <div class="sidebar-status"><div class="status-dot"></div><span>API Connected</span></div>
 </aside>
@@ -326,13 +150,12 @@ document.addEventListener('DOMContentLoaded',function(){
 <main class="main">
 <!-- DASHBOARD -->
 <div class="page active" id="page-dashboard">
-  <div class="topbar"><div style="display:flex;align-items:center;gap:10px;"><img src="/anti_ai-logo.png" alt="Anti-AI" class="logo-img logo-topbar"><div><div class="topbar-title">Dashboard</div><div class="topbar-sub">Overview of all review activity</div></div></div><div class="topbar-actions"><button class="btn btn-ghost btn-sm" onclick="refreshDashboard()">↻ Refresh</button><button class="btn btn-primary btn-sm" onclick="showPage('review')">+ New Review</button></div></div>
+  <div class="topbar"><div><div class="topbar-title">Dashboard</div><div class="topbar-sub">Overview of all review activity</div></div><div class="topbar-actions"><button class="btn btn-ghost btn-sm" onclick="refreshDashboard()">↻ Refresh</button><button class="btn btn-primary btn-sm" onclick="showPage('review')">+ New Review</button></div></div>
   <div class="content">
     <div class="stats-grid">
       <div class="stat-card"><div class="stat-label">Total Reviews</div><div class="stat-value" id="s-total">0</div></div>
       <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value" id="s-done" style="color:var(--green)">0</div></div>
-      <div class="stat-card"><div class="stat-label">Pending Review</div><div class="stat-value" id="s-pending" style="color:var(--orange)">0</div></div>
-      <div class="stat-card"><div class="stat-label">In Progress</div><div class="stat-value" id="s-active" style="color:var(--yellow)">0</div></div>
+      <div class="stat-card"><div class="stat-label">In Progress</div><div class="stat-value" id="s-active" style="color:var(--orange)">0</div></div>
       <div class="stat-card"><div class="stat-label">Failed</div><div class="stat-value" id="s-failed" style="color:var(--red)">0</div></div>
     </div>
     <div class="card"><div class="card-header"><h3>Recent Reviews</h3><button class="btn btn-ghost btn-sm" onclick="refreshDashboard()">↻</button></div><div class="card-body" id="recent-reviews"><div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No reviews yet. Click "New Review" to get started.</div></div></div></div>
@@ -341,42 +164,19 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <!-- RUN REVIEW -->
 <div class="page" id="page-review">
-  <div class="topbar"><div style="display:flex;align-items:center;gap:14px;"><img src="/anti_ai-logo.png" alt="Anti-AI" class="logo-img logo-topbar"><div><div class="topbar-title">Run Review</div><div class="topbar-sub">Select a repository and branch to review for issues</div></div></div></div>
+  <div class="topbar"><div><div class="topbar-title">Run Review</div><div class="topbar-sub">Select a repository and PR to review</div></div></div>
   <div class="content">
     <div class="three-col">
-      <!-- Column 1: Repository -->
       <div class="col-panel"><div class="col-header"><h3>1. Repository</h3><div class="spinner" id="repos-spinner" style="display:none"></div></div><div class="col-body" id="repo-list"><div class="empty"><div class="empty-text">Loading repos...</div></div></div></div>
-      <!-- Column 2: Branch -->
-      <div class="col-panel"><div class="col-header"><h3>2. Branch</h3><div class="spinner" id="branches-spinner" style="display:none"></div></div><div class="col-body" id="branch-list"><div class="empty"><div class="empty-icon">📂</div><div class="empty-text">Select a repository first</div></div></div></div>
-      <!-- Column 3: Review -->
+      <div class="col-panel"><div class="col-header"><h3>2. Pull Request</h3><div class="spinner" id="prs-spinner" style="display:none"></div></div><div class="col-body" id="pr-list"><div class="empty"><div class="empty-icon">📂</div><div class="empty-text">Select a repository first</div></div></div></div>
       <div class="col-panel"><div class="col-header"><h3>3. Review</h3></div><div class="col-body" id="review-panel" style="padding:16px;">
-        <div class="empty" id="review-empty"><div class="empty-icon">🔍</div><div class="empty-title">Ready to Review</div><div class="empty-text">Select a repository and branch, then click "Run Review"</div></div>
+        <div class="empty" id="review-empty"><div class="empty-icon">🔍</div><div class="empty-title">Ready to Review</div><div class="empty-text">Select a repository and PR, then click "Run Review"</div></div>
         <div id="review-selected" style="display:none;">
-          <div style="margin-bottom:16px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);">
-            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Selected Branch</div>
-            <div style="font-size:14px;font-weight:600;" id="review-branch-name">—</div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;" id="review-branch-meta">—</div>
-          </div>
-          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:16px;" id="btn-run-review" onclick="runBranchReview()">▶ Run AI Review</button>
+          <div style="margin-bottom:16px"><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Selected PR</div><div style="font-size:14px;font-weight:600;" id="review-pr-title">—</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;" id="review-pr-meta">—</div></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:16px;" id="btn-run-review" onclick="runReview()">▶ Run AI Review</button>
           <div id="log-section" style="display:none;"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:8px;">Live Log</div><div class="log-stream" id="log-stream"></div></div>
-          <div id="findings-section" style="display:none;margin-top:16px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);">Findings</div>
-              <div style="font-size:11px;color:var(--text-muted);" id="findings-count"></div>
-            </div>
-            <div id="findings-list"></div>
-            <!-- OK state: no issues found -->
-            <div id="review-ok" style="display:none;margin-top:16px;padding:20px;text-align:center;border:1px solid var(--border);border-radius:var(--radius-sm);">
-              <div style="font-size:28px;margin-bottom:8px;">✅</div>
-              <div style="font-size:14px;font-weight:600;color:var(--text);">Everything Looks OK!</div>
-              <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">No issues found in this branch. The code appears clean.</div>
-            </div>
-            <!-- Re-prompt for additional instructions -->
-            <div id="prompt-section" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
-              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:6px;">💬 Ask ReviewBot to Look Deeper</div>
-              <textarea class="prompt-input" id="re-prompt-input" placeholder="e.g., &quot;Check for race conditions&quot; or &quot;Look for memory leaks&quot; or &quot;Suggest better variable names&quot;"></textarea>
-              <button class="btn btn-ghost btn-sm" style="margin-top:8px;width:100%;justify-content:center;" onclick="submitRePrompt()">🔍 Re-review with Instructions</button>
-            </div>
+          <div id="findings-section" style="display:none;margin-top:16px;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);">Findings</div><div style="font-size:11px;color:var(--text-muted);" id="findings-count"></div></div><div id="findings-list"></div>
+            <div id="apply-section" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);"><div style="font-size:12px;font-weight:600;margin-bottom:8px;">✅ Approved Fixes: <span id="approved-count">0</span></div><div style="display:flex;gap:8px;"><button class="btn btn-success" style="flex:1;justify-content:center;" onclick="applyFixes()">🚀 Apply Fixes to Branch</button><button class="btn btn-ghost" onclick="selectAllFindings()">Select All</button></div></div>
           </div>
         </div>
       </div></div>
@@ -386,134 +186,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <!-- HISTORY -->
 <div class="page" id="page-history">
-  <div class="topbar"><div style="display:flex;align-items:center;gap:10px;"><img src="/anti_ai-logo.png" alt="Anti-AI" class="logo-img logo-topbar"><div><div class="topbar-title">Review History</div><div class="topbar-sub">All past and current reviews</div></div></div><div class="topbar-actions"><button class="btn btn-ghost btn-sm" onclick="refreshDashboard()">↻ Refresh</button></div></div>
+  <div class="topbar"><div><div class="topbar-title">Review History</div><div class="topbar-sub">All past and current reviews</div></div><div class="topbar-actions"><button class="btn btn-ghost btn-sm" onclick="refreshDashboard()">↻ Refresh</button></div></div>
   <div class="content"><div class="card"><div class="card-body" id="history-list"><div class="empty"><div class="empty-text">Loading...</div></div></div></div></div>
-</div>
-
-<!-- BRANCH EDITOR -->
-<div class="page" id="page-branches">
-  <div class="topbar"><div style="display:flex;align-items:center;gap:10px;"><img src="/anti_ai-logo.png" alt="Anti-AI" class="logo-img logo-topbar"><div><div class="topbar-title">Branch Editor</div><div class="topbar-sub">Access, edit, and implement features on any branch</div></div></div><div class="topbar-actions"><button class="btn btn-ghost btn-sm" onclick="loadBranchPage()">↻ Refresh</button></div></div>
-  <div class="content">
-    <div class="three-col">
-      <div class="col-panel"><div class="col-header"><h3>1. Repository</h3><div class="spinner" id="branch-repos-spinner" style="display:none"></div></div><div class="col-body" id="branch-repo-list"><div class="empty"><div class="empty-text">Loading repos...</div></div></div></div>
-      <div class="col-panel"><div class="col-header"><h3>2. Branch</h3><div class="spinner" id="branch-branches-spinner" style="display:none"></div></div><div class="col-body" id="branch-branch-list"><div class="empty"><div class="empty-icon">📂</div><div class="empty-text">Select a repository first</div></div></div></div>
-      <div class="col-panel"><div class="col-header"><h3>3. Editor</h3></div><div class="col-body" id="branch-editor-panel" style="padding:16px;">
-        <div class="empty" id="branch-editor-empty"><div class="empty-icon">🌿</div><div class="empty-title">Branch Workspace</div><div class="empty-text">Select a repository and branch to start editing</div></div>
-        <div id="branch-editor-content" style="display:none;">
-          <!-- Branch info bar -->
-          <div style="margin-bottom:16px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-              <div style="font-size:13px;font-weight:600;" id="be-branch-name">—</div>
-              <span class="state-badge" id="be-sync-badge">—</span>
-            </div>
-            <div style="font-size:11px;color:var(--text-muted);" id="be-sync-info">—</div>
-            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-              <button class="btn btn-sm btn-ghost" onclick="syncBranch()">↻ Sync with main</button>
-              <button class="btn btn-sm btn-ghost" onclick="refreshBranchSync()">Check Status</button>
-              <button class="btn btn-sm btn-primary" onclick="createPRFromBranch()">📤 Create PR</button>
-            </div>
-          </div>
-
-          <!-- File browser + editor -->
-          <div style="display:grid;grid-template-columns:240px 1fr;gap:12px;">
-            <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;display:flex;flex-direction:column;max-height:400px;">
-              <div style="padding:8px 12px;border-bottom:1px solid var(--border);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);display:flex;align-items:center;justify-content:space-between;">
-                <span>Files</span>
-                <button class="btn btn-sm btn-ghost" onclick="navigateFiles('..')" style="padding:2px 6px;font-size:10px;">↑ Up</button>
-              </div>
-              <div style="overflow-y:auto;flex:1;padding:4px;" id="be-file-list"><div class="empty"><div class="empty-text" style="padding:12px;">Loading...</div></div></div>
-            </div>
-            <div>
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-                <div style="font-size:12px;font-weight:600;" id="be-current-file">No file selected</div>
-                <div style="display:flex;gap:6px;">
-                  <button class="btn btn-sm btn-success" id="be-save-btn" onclick="saveCurrentFile()" style="display:none;">💾 Save</button>
-                  <button class="btn btn-sm btn-primary" onclick="showImplementPanel()">✨ AI Implement</button>
-                </div>
-              </div>
-              <textarea class="prompt-input" id="be-file-editor" style="min-height:350px;font-family:'JetBrains Mono',monospace;font-size:12px;resize:vertical;" placeholder="Select a file to edit..."></textarea>
-            </div>
-          </div>
-
-          <!-- AI Implement panel -->
-          <div id="be-implement-panel" style="display:none;margin-top:16px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);">
-            <div style="font-size:12px;font-weight:600;margin-bottom:8px;">✨ AI Code Implementation</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">Describe what you want to implement. ReviewBot will read the codebase, plan the changes, and commit them to this branch.</div>
-            <textarea class="prompt-input" id="be-implement-input" placeholder="e.g., &quot;Add a new REST endpoint for user profile management with validation&quot; or &quot;Refactor the auth module to use JWT tokens&quot; or &quot;Fix the memory leak in the data processing pipeline&quot;"></textarea>
-            <div style="display:flex;gap:8px;margin-top:8px;">
-              <button class="btn btn-primary" onclick="runImplement()" id="be-implement-btn">🚀 Implement</button>
-              <button class="btn btn-ghost" onclick="hideImplementPanel()">Cancel</button>
-            </div>
-            <div id="be-implement-status" style="display:none;margin-top:8px;font-size:12px;"></div>
-          </div>
-        </div>
-      </div></div>
-    </div>
-  </div>
-</div>
-
-<!-- SETTINGS -->
-<div class="page" id="page-settings">
-  <div class="topbar"><div style="display:flex;align-items:center;gap:14px;"><img src="/anti_ai-logo.png" alt="Anti-AI" class="logo-img logo-topbar"><div><div class="topbar-title">LLM Settings</div><div class="topbar-sub">Configure AI provider, API key, and model</div></div></div></div>
-  <div class="content">
-    <div style="max-width:720px;">
-
-      <!-- Provider Selection -->
-      <div class="card" style="margin-bottom:20px;">
-        <div class="card-header"><h3>🤖 Provider</h3><span class="state-badge state-pending_review" id="settings-status-badge">Loading</span></div>
-        <div class="card-body">
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;" id="provider-grid"></div>
-          <div id="provider-active-info" style="font-size:12px;color:var(--text-muted);margin-top:4px;"></div>
-        </div>
-      </div>
-
-      <!-- API Key -->
-      <div class="card" style="margin-bottom:20px;">
-        <div class="card-header"><h3>🔑 API Key</h3></div>
-        <div class="card-body">
-          <div style="margin-bottom:12px;">
-            <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);display:block;margin-bottom:6px;">API Key for <span id="api-key-provider-name">—</span></label>
-            <div style="display:flex;gap:8px;">
-              <input type="password" class="prompt-input" id="api-key-input" placeholder="Enter your API key..." style="font-family:'JetBrains Mono',monospace;font-size:13px;flex:1;">
-              <button class="btn btn-primary" onclick="saveApiKey()">Save Key</button>
-            </div>
-            <div id="api-key-status" style="font-size:11px;margin-top:6px;display:none;"></div>
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);">Your API key is stored locally on the server and never sent anywhere except the selected provider.</div>
-        </div>
-      </div>
-
-      <!-- Model Selection -->
-      <div class="card" style="margin-bottom:20px;">
-        <div class="card-header"><h3>🧠 Model</h3></div>
-        <div class="card-body">
-          <div style="margin-bottom:12px;">
-            <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);display:block;margin-bottom:6px;">Choose Model</label>
-            <select id="model-select" class="prompt-input" style="cursor:pointer;" onchange="selectModel(this.value)"></select>
-          </div>
-          <div style="margin-bottom:12px;">
-            <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);display:block;margin-bottom:6px;">Or Add Custom Model</label>
-            <div style="display:flex;gap:8px;">
-              <input type="text" class="prompt-input" id="custom-model-input" placeholder="e.g., openrouter/my-custom-model" style="font-family:'JetBrains Mono',monospace;font-size:13px;flex:1;">
-              <button class="btn btn-ghost" onclick="addCustomModel()">Add</button>
-            </div>
-          </div>
-          <div id="model-status" style="font-size:11px;margin-top:6px;display:none;"></div>
-        </div>
-      </div>
-
-      <!-- Current Config Summary -->
-      <div class="card">
-        <div class="card-header"><h3>📋 Active Configuration</h3><button class="btn btn-ghost btn-sm" onclick="loadSettings()">↻ Refresh</button></div>
-        <div class="card-body">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:2;color:var(--text-dim);" id="config-summary">
-            Loading...
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </div>
 
 </main>
@@ -521,7 +195,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <script>
 const API='/dashboard/api';
-let state={installations:[],repos:[],prs:[],selectedRepo:null,selectedPR:null,currentReviewId:null,findings:[],approvedFindings:new Set(),pollInterval:null};
+let state={installations:[],repos:[],prs:[],selectedRepo:null,selectedPR:null,currentReviewId:null,findings:[],approvedFindings:new Set()};
 
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -530,11 +204,9 @@ function showPage(name){
   document.getElementById('nav-'+name).classList.add('active');
   if(name==='review')loadRepos();
   if(name==='dashboard'||name==='history')refreshDashboard();
-  if(name==='branches')loadBranchPage();
-  if(name==='settings')loadSettings();
 }
 
-async function api(path,opts={}){const r=await fetch(API+path,{headers:{'Content-Type':'application/json'},...opts});if(!r.ok){const t=await r.text();throw new Error('API error '+r.status+': '+t)}const t=await r.text();return t?JSON.parse(t):[]}
+async function api(path,opts={}){const r=await fetch(API+path,{headers:{'Content-Type':'application/json'},...opts});if(!r.ok)throw new Error('API error: '+r.status);return r.json()}
 function post(path,body){return api(path,{method:'POST',body:JSON.stringify(body)})}
 
 async function refreshDashboard(){
@@ -542,8 +214,7 @@ async function refreshDashboard(){
     const stats=await api('/stats');
     document.getElementById('s-total').textContent=stats.total;
     document.getElementById('s-done').textContent=stats.byState['done']||0;
-    document.getElementById('s-pending').textContent=stats.byState['pending_review']||0;
-    const active=Object.entries(stats.byState).filter(([k])=>!['done','failed','cancelled','rejected','pending_review','publishing'].includes(k)).reduce((s,[,v])=>s+v,0);
+    const active=Object.entries(stats.byState).filter(([k])=>!['done','failed','cancelled'].includes(k)).reduce((s,[,v])=>s+v,0);
     document.getElementById('s-active').textContent=active;
     document.getElementById('s-failed').textContent=stats.byState['failed']||0;
     document.getElementById('history-count').textContent=stats.total;
@@ -555,18 +226,12 @@ async function refreshDashboard(){
 function renderRecentReviews(reviews){
   const el=document.getElementById('recent-reviews');
   if(!reviews.length){el.innerHTML='<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No reviews yet. Click "New Review" to get started.</div></div>';return}
-  el.innerHTML=reviews.slice(0,8).map(r=>{
-    const sc=r.state==='done'?'done':r.state==='failed'?'failed':r.state==='rejected'?'rejected':r.state==='pending_review'?'pending_review':'medium';
-    return `<div class="pr-item" onclick="showPage('history')" style="border:1px solid var(--border);border-radius:8px;margin-bottom:6px;"><div class="pr-number">#${r.prNumber}</div><div class="pr-info"><div class="pr-title">${r.repoFullName}</div><div class="pr-meta">${r.state} · ${r.processedFindingsCount||r.findingsCount||0} findings · ${timeAgo(r.updatedAt)}</div></div><span class="state-badge state-${sc}">${r.state}</span></div>`;
-  }).join('');
+  el.innerHTML=reviews.slice(0,8).map(r=>`<div class="pr-item" onclick="showPage(\'history\')" style="border:1px solid var(--border);border-radius:8px;margin-bottom:6px;"><div class="pr-number">#${r.prNumber}</div><div class="pr-info"><div class="pr-title">${r.repoFullName}</div><div class="pr-meta">${r.state} · ${r.processedFindingsCount||r.findingsCount||0} findings · ${timeAgo(r.updatedAt)}</div></div><span class="finding-sev sev-${r.state==='done'?'low':r.state==='failed'?'high':'medium'}">${r.state}</span></div>`).join('');
 }
 function renderHistory(reviews){
   const el=document.getElementById('history-list');
   if(!reviews.length){el.innerHTML='<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No reviews yet</div></div>';return}
-  el.innerHTML=reviews.map(r=>{
-    const sc=r.state==='done'?'done':r.state==='failed'?'failed':r.state==='rejected'?'rejected':r.state==='pending_review'?'pending_review':'medium';
-    return `<div class="finding-card"><div class="finding-top"><span class="state-badge state-${sc}">${r.state}</span><span class="finding-title">${r.repoFullName} #${r.prNumber}</span><span class="finding-confidence">${r.processedFindingsCount||r.findingsCount||0} findings</span></div><div class="finding-loc">Started: ${new Date(r.startedAt).toLocaleString()} · ${r.elapsedMs?(r.elapsedMs/1000).toFixed(1)+'s':'—'}</div>${r.error?`<div style="color:var(--red);font-size:12px;margin-top:4px">⚠ ${r.error}</div>`:''}</div>`;
-  }).join('');
+  el.innerHTML=reviews.map(r=>`<div class="finding-card"><div class="finding-top"><span class="finding-sev sev-${r.state==='done'?'low':r.state==='failed'?'high':'medium'}">${r.state}</span><span class="finding-title">${r.repoFullName} #${r.prNumber}</span><span class="finding-confidence">${r.processedFindingsCount||r.findingsCount||0} findings</span></div><div class="finding-loc">Started: ${new Date(r.startedAt).toLocaleString()} · ${r.elapsedMs?(r.elapsedMs/1000).toFixed(1)+'s':'—'}</div>${r.error?`<div style="color:var(--red);font-size:12px;margin-top:4px">⚠ ${r.error}</div>`:''}</div>`).join('');
 }
 
 async function loadRepos(){
@@ -574,8 +239,21 @@ async function loadRepos(){
   document.getElementById('repos-spinner').style.display='block';
   try{
     state.installations=await api('/github/installations');
-    if(state.installations.length>0) state.repos=await api('/github/installations/'+state.installations[0].id+'/repos');
-    if(!state.repos||!state.repos.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div class="empty-title">No Repositories</div><div class="empty-text">Install the GitHub App on a repository to get started.</div></div>';return}
+    if(!state.installations||!state.installations.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div class="empty-title">No Repositories</div><div class="empty-text">Install the GitHub App on a repository to get started.</div></div>';return}
+    // Fetch repos from ALL installations and combine them
+    var allRepos=[];
+    for(var i=0;i<state.installations.length;i++){
+      var instRepos=await api('/github/installations/'+state.installations[i].id+'/repos');
+      if(instRepos&&instRepos.length){
+        // Tag each repo with its installation id for later use
+        instRepos.forEach(function(r){r._instId=state.installations[i].id;r._owner=state.installations[i].account.login;});
+        allRepos=allRepos.concat(instRepos);
+      }
+    }
+    // Deduplicate by full_name
+    var seen={};
+    state.repos=allRepos.filter(function(r){if(seen[r.full_name])return false;seen[r.full_name]=true;return true;});
+    if(!state.repos.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div class="empty-title">No Repositories</div><div class="empty-text">Install the GitHub App on a repository to get started.</div></div>';return}
     el.innerHTML=state.repos.map(repo=>`<div class="repo-item ${state.selectedRepo&&state.selectedRepo.id===repo.id?'selected':''}" onclick="selectRepo('${repo.full_name}',this)"><span class="repo-icon">${repo.private?'🔒':'📂'}</span><div class="repo-info"><div class="repo-name">${repo.name}</div><div class="repo-desc">${repo.description||repo.full_name}</div></div></div>`).join('');
   }catch(e){el.innerHTML=`<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Error: ${e.message}</div></div>`}
   document.getElementById('repos-spinner').style.display='none';
@@ -585,92 +263,76 @@ function selectRepo(fullName,el){
   const [owner,repo]=fullName.split('/');
   const found=state.repos.find(r=>r.full_name===fullName);
   state.selectedRepo=found?{...found,owner:{login:owner}}:{full_name:fullName,owner:{login:owner},name:repo};
-  state.selectedBranch=null;state.findings=[];state.approvedFindings.clear();
+  state.selectedPR=null;state.findings=[];state.approvedFindings.clear();
   document.querySelectorAll('.repo-item').forEach(e=>e.classList.remove('selected'));
   el.classList.add('selected');
-  document.getElementById('branch-list').innerHTML='<div class="empty"><div class="empty-text">Loading branches...</div></div>';
+  document.getElementById('pr-list').innerHTML='<div class="empty"><div class="empty-text">Loading PRs...</div></div>';
   document.getElementById('review-selected').style.display='none';
   document.getElementById('review-empty').style.display='block';
-  loadBranches(owner,repo);
+  loadPRs(owner,repo);
 }
 
-async function loadBranches(owner,repo){
-  const el=document.getElementById('branch-list');
-  document.getElementById('branches-spinner').style.display='block';
+async function loadPRs(owner,repo){
+  const el=document.getElementById('pr-list');
+  document.getElementById('prs-spinner').style.display='block';
   try{
-    state.branches=await api(`/github/repos/${owner}/${repo}/branches`);
-    if(!state.branches||!state.branches.length){el.innerHTML='<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No branches found</div></div>';return}
-    el.innerHTML=state.branches.map(b=>`<div class="pr-item ${state.selectedBranch&&state.selectedBranch.name===b.name?'selected':''}" onclick="selectReviewBranch('${b.name}',this)"><div class="pr-number">${b.protected?'🔒':'🌿'}</div><div class="pr-info"><div class="pr-title">${b.name}</div><div class="pr-meta">${b.sha.substring(0,8)}${b.protected?' · protected':''}</div></div></div>`).join('');
+    state.prs=await api(`/github/repos/${owner}/${repo}/prs?state=open`);
+    if(!state.prs.length){el.innerHTML='<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No open pull requests</div></div>';return}
+    el.innerHTML=state.prs.map(pr=>`<div class="pr-item ${state.selectedPR&&state.selectedPR.number===pr.number?'selected':''}" onclick="selectPR(${pr.number},this)"><div class="pr-number">#${pr.number}</div><div class="pr-info"><div class="pr-title">${pr.title}</div><div class="pr-meta">@${pr.user.login} · ${pr.head.ref} → ${pr.base.ref} · ${timeAgo(pr.updatedAt)}</div></div>${pr.draft?'<span class="pr-draft">DRAFT</span>':''}</div>`).join('');
   }catch(e){el.innerHTML=`<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Error: ${e.message}</div></div>`}
-  document.getElementById('branches-spinner').style.display='none';
+  document.getElementById('prs-spinner').style.display='none';
 }
 
-function selectReviewBranch(branchName,el){
-  state.selectedBranch=state.branches.find(b=>b.name===branchName);
+function selectPR(number,el){
+  state.selectedPR=state.prs.find(p=>p.number===number);
   state.findings=[];state.approvedFindings.clear();
-  document.querySelectorAll('#branch-list .pr-item').forEach(e=>e.classList.remove('selected'));
+  document.querySelectorAll('.pr-item').forEach(e=>e.classList.remove('selected'));
   el.classList.add('selected');
   document.getElementById('review-empty').style.display='none';
   document.getElementById('review-selected').style.display='block';
-  document.getElementById('review-branch-name').textContent=state.selectedBranch.name;
-  document.getElementById('review-branch-meta').textContent=`${state.selectedRepo.full_name} · ${state.selectedBranch.sha.substring(0,8)}${state.selectedBranch.protected?' · protected branch':''}`;
+  document.getElementById('review-pr-title').textContent=`#${state.selectedPR.number} — ${state.selectedPR.title}`;
+  document.getElementById('review-pr-meta').textContent=`${state.selectedRepo.full_name} · ${state.selectedPR.head.ref} → ${state.selectedPR.base.ref} · @${state.selectedPR.user.login}`;
   document.getElementById('log-section').style.display='none';
   document.getElementById('findings-section').style.display='none';
-  document.getElementById('review-ok').style.display='none';
-  document.getElementById('prompt-section').style.display='none';
+  document.getElementById('apply-section').style.display='none';
   document.getElementById('log-stream').innerHTML='';
 }
 
-async function runBranchReview(){
-  if(!state.selectedBranch)return;
+async function runReview(){
+  if(!state.selectedPR)return;
   const owner=state.selectedRepo.owner.login;
   const repo=state.selectedRepo.name;
-  const branch=state.selectedBranch.name;
+  const prNumber=state.selectedPR.number;
   const btn=document.getElementById('btn-run-review');
   btn.disabled=true;btn.innerHTML='<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div> Running...';
   document.getElementById('log-section').style.display='block';
   document.getElementById('findings-section').style.display='none';
-  document.getElementById('review-ok').style.display='none';
-  document.getElementById('prompt-section').style.display='none';
+  document.getElementById('apply-section').style.display='none';
   document.getElementById('log-stream').innerHTML='';
   try{
-    const result=await post('/review-branch',{owner,repo,branch});
+    const result=await post('/review',{owner,repo,prNumber});
     state.currentReviewId=result.reviewId;
-    addLog('init','Branch review started: '+result.reviewId.substring(0,8)+'...');
-    document.getElementById('log-section').style.display='block';
-    startPolling(result.reviewId);
+    addLog('init','Review started: '+result.reviewId.substring(0,8)+'...');
+    pollReview(result.reviewId);
   }catch(e){addLog('error','Failed to start review: '+e.message,'error')}
   btn.disabled=false;btn.innerHTML='▶ Run AI Review';
 }
 
-function startPolling(reviewId){
-  stopPolling();
-  // Immediate first check
-  checkReviewStatus(reviewId);
-  state.pollInterval=setInterval(async()=>{
-    await checkReviewStatus(reviewId);
-  },1500);
-}
-
-async function checkReviewStatus(reviewId){
-  try{
-    const logs=await api('/reviews/'+reviewId+'/logs');
-    renderLogs(logs);
-    const detail=await api('/reviews/'+reviewId);
-    if(['done','failed','cancelled','rejected','pending_review'].includes(detail.state)){
+function pollReview(reviewId){
+  const interval=setInterval(async()=>{
+    try{
+      const logs=await api('/reviews/'+reviewId+'/logs');
+      renderLogs(logs);
       const findings=await api('/reviews/'+reviewId+'/findings');
-      state.findings=findings;
-      state.approvedFindings.clear();
-      renderFindings(findings);
-      stopPolling();
-      addLog(detail.state==='done'?'done':'error','Review '+detail.state,detail.state==='done'?'success':'error');
-      if(detail.error)addLog('error',detail.error,'error');
-    }
-  }catch(e){console.error('Poll error:',e)}
-}
-
-function stopPolling(){
-  if(state.pollInterval){clearInterval(state.pollInterval);state.pollInterval=null}
+      if(findings.length>0){state.findings=findings;renderFindings(findings)}
+      const detail=await api('/reviews/'+reviewId);
+      if(['done','failed','cancelled'].includes(detail.state)){
+        clearInterval(interval);
+        addLog(detail.state==='done'?'done':'error','Review '+detail.state,detail.state==='done'?'success':'error');
+        if(detail.error)addLog('error',detail.error,'error');
+      }
+    }catch(e){console.error('Poll error:',e)}
+  },2000);
 }
 
 function addLog(stage,msg,level='info'){
@@ -692,124 +354,30 @@ function renderFindings(findings){
   document.getElementById('findings-section').style.display='block';
   document.getElementById('findings-count').textContent=`${findings.length} issue${findings.length!==1?'s':''} found`;
   const list=document.getElementById('findings-list');
-
-  if(findings.length===0){
-    list.innerHTML='';
-    document.getElementById('review-ok').style.display='block';
-    document.getElementById('findings-count').textContent='0 issues found';
-    document.getElementById('prompt-section').style.display='block';
-    return;
-  }
-
-  document.getElementById('review-ok').style.display='none';
-  document.getElementById('findings-count').textContent=`${findings.length} issue${findings.length!==1?'s':''} found`;
-  document.getElementById('prompt-section').style.display='block';
-
   list.innerHTML=findings.map((f,i)=>{
-    const c=f.confidence>=.85?'#cccccc':f.confidence>=.7?'#999999':'#666666';
+    const c=f.confidence>=.85?'var(--green)':f.confidence>=.7?'var(--yellow)':'var(--orange)';
     const ap=state.approvedFindings.has(i);
     return `<div class="finding-card ${ap?'approved':''}" id="finding-${i}"><div class="finding-top"><span class="finding-sev sev-${f.severity}">${f.severity}</span><span class="finding-title">${esc(f.title)}</span><span class="finding-confidence">${Math.round(f.confidence*100)}%</span></div><div class="confidence-bar"><div class="confidence-fill" style="width:${f.confidence*100}%;background:${c}"></div></div><div class="finding-loc">📁 ${esc(f.file)}:${f.start_line}-${f.end_line} ${f.cwe?'· <span style="color:var(--orange)">'+f.cwe+'</span>':''} · ${f.category}</div><div class="finding-section"><div class="finding-section-label">Issue</div><div class="finding-section-body">${esc(f.explanation)}</div></div>${f.fix_explanation?`<div class="finding-section"><div class="finding-section-label">🔧 What the fix does</div><div class="finding-section-body" style="color:var(--green)">${esc(f.fix_explanation)}</div></div>`:''}${f.suggestion_patch?`<div class="finding-section"><div class="finding-section-label">Suggested fix</div><div class="finding-section-body"><pre>${esc(f.suggestion_patch)}</pre></div></div>`:''}<div class="finding-actions"><button class="btn btn-sm ${ap?'btn-success':'btn-ghost'}" onclick="toggleFinding(${i})">${ap?'✅ Approved':'○ Approve'}</button><button class="btn btn-sm btn-ghost" onclick="rejectFinding(${i})">✕ Reject</button></div></div>`;
   }).join('');
-  updateActionButtons();
+  updateApplySection();
 }
 
 function toggleFinding(i){
   if(state.approvedFindings.has(i))state.approvedFindings.delete(i);else state.approvedFindings.add(i);
   renderFindings(state.findings);
 }
-function rejectFinding(i){document.getElementById('finding-'+i).classList.add('rejected');state.approvedFindings.delete(i);updateActionButtons()}
+function rejectFinding(i){document.getElementById('finding-'+i).classList.add('rejected');state.approvedFindings.delete(i);updateApplySection()}
 function selectAllFindings(){state.findings.forEach((_,i)=>state.approvedFindings.add(i));renderFindings(state.findings)}
-// ── Toggle finding approval ──
-function toggleFinding(i){
-  if(state.approvedFindings.has(i)){state.approvedFindings.delete(i);}
-  else{state.approvedFindings.add(i);}
-  renderFindings(state.findings);
-}
+function updateApplySection(){const c=state.approvedFindings.size;document.getElementById('approved-count').textContent=c;document.getElementById('apply-section').style.display=c>0?'block':'none'}
 
-function rejectFinding(i){
-  state.approvedFindings.delete(i);
-  renderFindings(state.findings);
-}
-
-function selectAllFindings(){
-  state.findings.forEach((_,i)=>state.approvedFindings.add(i));
-  renderFindings(state.findings);
-}
-
-// ── Publish approved findings to PR ──
-async function publishReview(){
-  if(!state.currentReviewId)return;
-  const approved=Array.from(state.approvedFindings);
-  if(!approved.length){alert('No findings approved. Approve at least one finding to publish.');return}
-  try{
-    const owner=state.selectedRepo.owner.login;
-    const repo=state.selectedRepo.name;
-    const result=await post('/reviews/'+state.currentReviewId+'/publish',{owner,repo,prNumber:0,approvedFindingIndices:approved});
-    addLog('done','✅ Published '+result.commentsPosted+' comment(s)!','success');
-    alert('✅ Published '+result.commentsPosted+' comment(s)!');
-    refreshDashboard();
-  }catch(e){addLog('error','Publish failed: '+e.message,'error');alert('Error: '+e.message)}
-}
-
-// ── Reject all findings ──
-async function rejectReview(){
-  if(!state.currentReviewId)return;
-  if(!confirm('Reject this review? All findings will be dismissed without publishing.'))return;
-  try{
-    await post('/reviews/'+state.currentReviewId+'/reject',{});
-    addLog('done','Review rejected — no comments published.','warn');
-    alert('Review rejected. No comments were published to the PR.');
-    refreshDashboard();
-  }catch(e){addLog('error','Reject failed: '+e.message,'error');alert('Error: '+e.message)}
-}
-
-// ── Re-review with additional instructions ──
-async function submitRePrompt(){
-  const input=document.getElementById('re-prompt-input');
-  const prompt=input.value.trim();
-  if(!prompt){alert('Please enter instructions for what ReviewBot should focus on.');return}
-  if(!state.currentReviewId||!state.selectedBranch)return;
-  const owner=state.selectedRepo.owner.login;
-  const repo=state.selectedRepo.name;
-  try{
-    addLog('review','Re-reviewing with prompt: "'+prompt.substring(0,60)+'..."','warn');
-    const result=await post('/reviews/'+state.currentReviewId+'/re-review',{owner,repo,prNumber:0,prompt});
-    addLog('review',result.message,'info');
-    state.findings=[];state.approvedFindings.clear();
-    document.getElementById('findings-section').style.display='none';
-    document.getElementById('review-ok').style.display='none';
-    document.getElementById('prompt-section').style.display='none';
-    input.value='';
-    startPolling(state.currentReviewId);
-  }catch(e){addLog('error','Re-review failed: '+e.message,'error');alert('Error: '+e.message)}
-}
-
-// ── Apply approved fixes to reviewbot-test branch ──
-async function applyToTestBranch(){
-  if(!state.currentReviewId)return;
-  const approved=Array.from(state.approvedFindings);
-  if(!approved.length){alert('No findings approved. Approve at least one finding with a code fix.');return}
-  const btn=event.target;
-  btn.disabled=true;btn.innerHTML='<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div> Applying...';
-  try{
-    const owner=state.selectedRepo.owner.login;
-    const repo=state.selectedRepo.name;
-    const result=await post('/reviews/'+state.currentReviewId+'/apply-to-branch',{owner,repo,prNumber:0,approvedFindingIndices:approved,targetBranch:'reviewbot-test'});
-    addLog('done','✅ Applied '+result.commitShas.length+' fix(es) to branch: '+result.branch,'success');
-    alert('✅ Applied '+result.commitShas.length+' fix(es) to branch `'+result.branch+'`!\n\nYou can review the changes on the test branch before merging.');
-  }catch(e){addLog('error','Apply failed: '+e.message,'error');alert('Error: '+e.message)}
-  btn.disabled=false;updateActionButtons();
-}
-
-// ── Legacy direct apply ──
 async function applyFixes(){
-  if(!state.approvedFindings.size)return;
+  if(!state.selectedPR||!state.approvedFindings.size)return;
   const approved=[];state.approvedFindings.forEach(i=>{const f=state.findings[i];if(f&&f.suggestion_patch)approved.push({file:f.file,suggestion_patch:f.suggestion_patch,title:f.title})});
   if(!approved.length){alert('No approved fixes with code patches to apply.');return}
   const btn=event.target;btn.disabled=true;btn.innerHTML='<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div> Applying...';
   try{
     const owner=state.selectedRepo.owner.login;const repo=state.selectedRepo.name;
-    const result=await post('/apply-fixes',{owner,repo,prNumber:0,findings:approved});
+    const result=await post('/apply-fixes',{owner,repo,prNumber:state.selectedPR.number,findings:approved});
     addLog('done','✅ Fixes applied! Branch: '+result.branch,'success');
     addLog('done',result.commitShas.length+' commit(s) created','success');
     alert('✅ Applied '+result.commitShas.length+' fix(es)!\n\nBranch: '+result.branch);
@@ -817,310 +385,8 @@ async function applyFixes(){
   btn.disabled=false;btn.innerHTML='🚀 Apply Fixes to Branch';
 }
 
-// ── Branch Editor ──
-let branchState={repos:[],branches:[],selectedRepo:null,selectedBranch:null,currentDir:'',currentFile:null,fileContent:'',originalContent:''};
-
-async function loadBranchPage(){
-  await loadBranchRepos();
-}
-
-async function loadBranchRepos(){
-  const el=document.getElementById('branch-repo-list');
-  document.getElementById('branch-repos-spinner').style.display='block';
-  try{
-    branchState.installations=await api('/github/installations');
-    if(branchState.installations.length>0) branchState.repos=await api('/github/installations/'+branchState.installations[0].id+'/repos');
-    if(!branchState.repos||!branchState.repos.length){el.innerHTML='<div class="empty"><div class="empty-icon">📂</div><div class="empty-title">No Repositories</div><div class="empty-text">Install the GitHub App on a repository.</div></div>';return}
-    el.innerHTML=branchState.repos.map(r=>`<div class="repo-item ${branchState.selectedRepo&&branchState.selectedRepo.id===r.id?'selected':''}" onclick="selectBranchRepo('${r.full_name}',this)"><span class="repo-icon">${r.private?'🔒':'📂'}</span><div class="repo-info"><div class="repo-name">${r.name}</div><div class="repo-desc">${r.description||r.full_name}</div></div></div>`).join('');
-  }catch(e){el.innerHTML=`<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Error: ${e.message}</div></div>`}
-  document.getElementById('branch-repos-spinner').style.display='none';
-}
-
-function selectBranchRepo(fullName,el){
-  const [owner,repo]=fullName.split('/');
-  const found=branchState.repos.find(r=>r.full_name===fullName);
-  branchState.selectedRepo=found?{...found,owner:{login:owner}}:{full_name:fullName,owner:{login:owner},name:repo};
-  branchState.selectedBranch=null;branchState.currentDir='';branchState.currentFile=null;
-  document.querySelectorAll('#branch-repo-list .repo-item').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('branch-editor-content').style.display='none';
-  document.getElementById('branch-editor-empty').style.display='block';
-  loadBranchList(owner,repo);
-}
-
-async function loadBranchList(owner,repo){
-  const el=document.getElementById('branch-branch-list');
-  document.getElementById('branch-branches-spinner').style.display='block';
-  try{
-    branchState.branches=await api(`/github/repos/${owner}/${repo}/branches`);
-    if(!branchState.branches.length){el.innerHTML='<div class="empty"><div class="empty-text">No branches found</div></div>';return}
-    el.innerHTML=branchState.branches.map(b=>`<div class="pr-item ${branchState.selectedBranch===b.name?'selected':''}" onclick="selectBranch('${b.name}',this)"><div class="pr-number" style="font-size:11px;color:var(--text-dim);">🌿</div><div class="pr-info"><div class="pr-title">${b.name}</div><div class="pr-meta">${b.protected?'🔒 Protected':'Public'} · ${b.sha.substring(0,7)}</div></div></div>`).join('');
-  }catch(e){el.innerHTML=`<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Error: ${e.message}</div></div>`}
-  document.getElementById('branch-branches-spinner').style.display='none';
-}
-
-async function selectBranch(branchName,el){
-  branchState.selectedBranch=branchName;
-  branchState.currentDir='';
-  branchState.currentFile=null;
-  branchState.fileContent='';
-  branchState.originalContent='';
-  document.querySelectorAll('#branch-branch-list .pr-item').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('branch-editor-empty').style.display='none';
-  document.getElementById('branch-editor-content').style.display='block';
-  document.getElementById('be-branch-name').textContent=branchName;
-  document.getElementById('be-current-file').textContent='No file selected';
-  document.getElementById('be-file-editor').value='';
-  document.getElementById('be-save-btn').style.display='none';
-  await refreshBranchSync();
-  await navigateFiles('');
-}
-
-async function refreshBranchSync(){
-  if(!branchState.selectedRepo||!branchState.selectedBranch)return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  try{
-    const sync=await api(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/sync`);
-    const badge=document.getElementById('be-sync-badge');
-    const info=document.getElementById('be-sync-info');
-    if(sync.status==='identical'){badge.className='state-badge state-done';badge.textContent='✅ In sync';info.textContent=`Branch is up to date with ${sync.defaultBranch}`;}
-    else if(sync.status==='ahead'){badge.className='state-badge state-pending_review';badge.textContent='⬆️ Ahead';info.textContent=`${sync.ahead_by} commit(s) ahead of ${sync.defaultBranch}`;}
-    else if(sync.status==='behind'){badge.className='state-badge state-failed';badge.textContent='⬇️ Behind';info.textContent=`${sync.behind_by} commit(s) behind ${sync.defaultBranch} — sync recommended`;}
-    else{badge.className='state-badge state-failed';badge.textContent='⚠️ Diverged';info.textContent=`Diverged: ${sync.ahead_by} ahead, ${sync.behind_by} behind ${sync.defaultBranch}`;}
-  }catch(e){document.getElementById('be-sync-info').textContent='Error checking sync: '+e.message;}
-}
-
-async function syncBranch(){
-  if(!branchState.selectedRepo||!branchState.selectedBranch)return;
-  if(!confirm(`Sync '${branchState.selectedBranch}' with the default branch? This will merge the default branch into it.`))return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  try{
-    const result=await post(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/sync`,{});
-    alert(result.message);
-    await refreshBranchSync();
-  }catch(e){alert('Sync failed: '+e.message);}
-}
-
-async function navigateFiles(dir){
-  if(!branchState.selectedRepo||!branchState.selectedBranch)return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  if(dir==='..'){
-    const parts=branchState.currentDir.split('/');
-    parts.pop();
-    branchState.currentDir=parts.join('/');
-  }else if(dir){
-    branchState.currentDir=branchState.currentDir?branchState.currentDir+'/'+dir:dir;
-  }
-  try{
-    const files=await api(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/files?path=${encodeURIComponent(branchState.currentDir)}`);
-    const list=document.getElementById('be-file-list');
-    let html='';
-    if(branchState.currentDir){
-      html+=`<div class="repo-item" onclick="navigateFiles('..')"><span class="repo-icon">📁</span><div class="repo-info"><div class="repo-name">..</div></div></div>`;
-    }
-    html+=files.filter(f=>f.type==='dir').map(f=>`<div class="repo-item" onclick="navigateFiles('${f.path.split('/').pop()}')"><span class="repo-icon">📁</span><div class="repo-info"><div class="repo-name">${f.path.split('/').pop()}</div></div></div>`).join('');
-    html+=files.filter(f=>f.type==='file').map(f=>`<div class="repo-item" onclick="openFile('${f.path}')"><span class="repo-icon">📄</span><div class="repo-info"><div class="repo-name">${f.path.split('/').pop()}</div><div class="repo-desc">${(f.size/1024).toFixed(1)} KB</div></div></div>`).join('');
-    list.innerHTML=html||'<div class="empty"><div class="empty-text">Empty directory</div></div>';
-  }catch(e){document.getElementById('be-file-list').innerHTML=`<div class="empty"><div class="empty-text">Error: ${e.message}</div></div>`}
-}
-
-async function openFile(filePath){
-  if(!branchState.selectedRepo||!branchState.selectedBranch)return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  try{
-    const file=await api(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/file?path=${encodeURIComponent(filePath)}`);
-    branchState.currentFile=filePath;
-    branchState.fileContent=file.content;
-    branchState.originalContent=file.content;
-    document.getElementById('be-current-file').textContent=filePath;
-    document.getElementById('be-file-editor').value=file.content;
-    document.getElementById('be-save-btn').style.display='inline-flex';
-  }catch(e){alert('Failed to open file: '+e.message);}
-}
-
-async function saveCurrentFile(){
-  if(!branchState.currentFile||!branchState.selectedRepo||!branchState.selectedBranch)return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  const content=document.getElementById('be-file-editor').value;
-  const btn=document.getElementById('be-save-btn');
-  btn.disabled=true;btn.innerHTML='<div class="spinner" style="width:12px;height:12px;border-width:2px;"></div> Saving...';
-  try{
-    await post(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/file`,{
-      path:branchState.currentFile,
-      content,
-      commitMessage:`Update ${branchState.currentFile} [ReviewBot]`
-    });
-    branchState.originalContent=content;
-    btn.innerHTML='✅ Saved!';
-    setTimeout(()=>{btn.innerHTML='💾 Save';btn.disabled=false;},2000);
-  }catch(e){alert('Save failed: '+e.message);btn.innerHTML='💾 Save';btn.disabled=false;}
-}
-
-function showImplementPanel(){
-  document.getElementById('be-implement-panel').style.display='block';
-  document.getElementById('be-implement-input').focus();
-}
-
-function hideImplementPanel(){
-  document.getElementById('be-implement-panel').style.display='none';
-  document.getElementById('be-implement-input').value='';
-  document.getElementById('be-implement-status').style.display='none';
-}
-
-async function runImplement(){
-  if(!branchState.selectedRepo||!branchState.selectedBranch)return;
-  const prompt=document.getElementById('be-implement-input').value.trim();
-  if(!prompt){alert('Please describe what you want to implement.');return}
-  if(!confirm('ReviewBot will read the codebase, generate changes, and commit them to the branch. Continue?'))return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  const btn=document.getElementById('be-implement-btn');
-  const status=document.getElementById('be-implement-status');
-  btn.disabled=true;btn.innerHTML='<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div> Working...';
-  status.style.display='block';status.innerHTML='<span style="color:var(--orange)">⏳ Reading codebase and planning changes...</span>';
-  try{
-    const result=await post(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/implement`,{prompt});
-    status.innerHTML=`<span style="color:var(--green)">✅ Done! Changed files: ${result.filesChanged.join(', ')}</span><br><span style="color:var(--text-muted)">Commit: ${result.commitSha.substring(0,7)}</span>`;
-    document.getElementById('be-implement-input').value='';
-    // Refresh file list
-    await navigateFiles('');
-  }catch(e){
-    status.innerHTML=`<span style="color:var(--red)">❌ Error: ${e.message}</span>`;
-  }
-  btn.disabled=false;btn.innerHTML='🚀 Implement';
-}
-
-async function createPRFromBranch(){
-  if(!branchState.selectedRepo||!branchState.selectedBranch)return;
-  const owner=branchState.selectedRepo.owner.login;
-  const repo=branchState.selectedRepo.name;
-  const title=prompt('PR Title:','['+branchState.selectedBranch+'] Changes by ReviewBot');
-  if(!title)return;
-  const body=prompt('PR Body (optional):','Changes implemented by ReviewBot on branch `'+branchState.selectedBranch+'`');
-  try{
-    const result=await post(`/github/repos/${owner}/${repo}/branches/${branchState.selectedBranch}/pr`,{title,body:body||''});
-    alert('✅ PR created! #'+(result.number||'')+'\n'+(result.html_url||''));
-  }catch(e){alert('Failed to create PR: '+e.message);}
-}
-
 function timeAgo(iso){if(!iso)return '—';const d=Date.now()-new Date(iso).getTime();if(d<60000)return Math.floor(d/1000)+'s ago';if(d<3600000)return Math.floor(d/60000)+'m ago';if(d<86400000)return Math.floor(d/3600000)+'h ago';return new Date(iso).toLocaleDateString()}
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-
-// ── Settings ──
-let settingsData=null;
-
-async function loadSettings(){
-  try{
-    settingsData=await api('/settings');
-    renderProviderGrid();
-    renderModelSelect();
-    updateConfigSummary();
-    const badge=document.getElementById('settings-status-badge');
-    if(badge){badge.textContent='Connected';badge.className='state-badge state-done';}
-  }catch(e){
-    const badge=document.getElementById('settings-status-badge');
-    if(badge){badge.textContent='Error';badge.className='state-badge state-failed';}
-    console.error('Failed to load settings:',e);
-  }
-}
-
-function renderProviderGrid(){
-  const grid=document.getElementById('provider-grid');
-  if(!grid||!settingsData)return;
-  grid.innerHTML=settingsData.providers.map(p=>{
-    const isActive=p.id===settingsData.activeProviderId;
-    const hasKey=p.apiKey&&p.apiKey.length>0;
-    return `<div class="card" style="padding:14px;text-align:center;cursor:pointer;border-color:${isActive?'var(--text)':'var(--border)'};background:${isActive?'var(--surface2)':'var(--surface)'};" onclick="selectProvider('${p.id}')">
-      <div style="font-size:20px;margin-bottom:6px;">${getProviderIcon(p.id)}</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px;">${p.name}</div>
-      <div style="font-size:10px;color:var(--text-muted);">${p.models.length} models</div>
-      <div style="margin-top:6px;">${hasKey?'<span class="state-badge state-done" style="font-size:9px;">Key Set</span>':'<span class="state-badge state-pending_review" style="font-size:9px;">No Key</span>'}</div>
-      ${isActive?'<div style="margin-top:4px;font-size:9px;color:var(--text);font-weight:600;">ACTIVE</div>':''}
-    </div>`;
-  }).join('');
-  const active=settingsData.providers.find(p=>p.id===settingsData.activeProviderId);
-  document.getElementById('api-key-provider-name').textContent=active?active.name:'—';
-  document.getElementById('provider-active-info').textContent=active?`Active: ${active.name} · ${active.baseUrl}`:'No provider selected';
-  // Pre-fill API key input
-  const keyInput=document.getElementById('api-key-input');
-  if(keyInput&&active)keyInput.value=active.apiKey||'';
-}
-
-function getProviderIcon(id){
-  const icons={openrouter:'🌐',openai:'🔵',anthropic:'🟣',google:'🔴'};
-  return icons[id]||'🤖';
-}
-
-async function selectProvider(id){
-  try{
-    await post('/settings/provider',{providerId:id});
-    await loadSettings();
-  }catch(e){console.error('Failed to set provider:',e);}
-}
-
-function renderModelSelect(){
-  const sel=document.getElementById('model-select');
-  if(!sel||!settingsData)return;
-  const active=settingsData.providers.find(p=>p.id===settingsData.activeProviderId);
-  if(!active)return;
-  sel.innerHTML='<option value="">-- Select a model --</option>'+active.models.map(m=>`<option value="${m}" ${m===settingsData.activeModel?'selected':''}>${m}</option>`).join('');
-}
-
-async function selectModel(model){
-  try{
-    await post('/settings/model',{model});
-    settingsData.activeModel=model;
-    updateConfigSummary();
-    const status=document.getElementById('model-status');
-    status.style.display='block';
-    status.innerHTML='<span style="color:var(--text)">✅ Model set to: '+model+'</span>';
-    setTimeout(()=>{status.style.display='none';},3000);
-  }catch(e){console.error('Failed to set model:',e);}
-}
-
-async function saveApiKey(){
-  if(!settingsData)return;
-  const providerId=settingsData.activeProviderId;
-  const apiKey=document.getElementById('api-key-input').value.trim();
-  if(!apiKey)return;
-  try{
-    await post('/settings/api-key',{providerId,apiKey});
-    const status=document.getElementById('api-key-status');
-    status.style.display='block';
-    status.innerHTML='<span style="color:var(--text)">✅ API key saved for '+providerId+'</span>';
-    setTimeout(()=>{status.style.display='none';},3000);
-    await loadSettings();
-  }catch(e){console.error('Failed to save API key:',e);}
-}
-
-async function addCustomModel(){
-  if(!settingsData)return;
-  const model=document.getElementById('custom-model-input').value.trim();
-  if(!model)return;
-  try{
-    await post('/settings/custom-model',{providerId:settingsData.activeProviderId,model});
-    document.getElementById('custom-model-input').value='';
-    await loadSettings();
-  }catch(e){console.error('Failed to add custom model:',e);}
-}
-
-function updateConfigSummary(){
-  const el=document.getElementById('config-summary');
-  if(!el||!settingsData)return;
-  const active=settingsData.providers.find(p=>p.id===settingsData.activeProviderId);
-  el.innerHTML=`<div>Provider: <span style="color:var(--text);">${active?active.name:'—'} (${settingsData.activeProviderId})</span></div>
-    <div>Model: <span style="color:var(--text);">${settingsData.activeModel||'—'}</span></div>
-    <div>Base URL: <span style="color:var(--text-dim);">${active?active.baseUrl:'—'}</span></div>
-    <div>API Key: <span style="color:var(--text);">${active?(active.apiKey?'•••••••• ('+active.apiKey.substring(0,8)+'...)':'Not set'):'—'}</span></div>
-    <div>Available Models: <span style="color:var(--text-dim);">${active?active.models.length:0}</span></div>`;
-}
-
 refreshDashboard();
 </script>
 </body>
