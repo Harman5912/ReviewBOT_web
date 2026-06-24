@@ -625,17 +625,85 @@ export class DashboardService {
     prData: any,
     userPrompt: string,
   ): Promise<void> {
+    const repoFullName = repository.full_name;
     try {
+      // ── CLONE ──
       this.orchestrator.transition(review.reviewId, 'cloning' as any);
-      const clonePath = await this.github.cloneRepository(repository, prData?.head?.ref || 'main');
+      const branch = prData?.head?.ref || 'main';
+      const clonePath = await this.github.cloneRepository(repository, branch);
       this.logger.log(`[${review.reviewId}] Cloned to ${clonePath}`);
+
+      // ── INDEX ──
       this.orchestrator.transition(review.reviewId, 'indexing' as any);
-      await this.contextRetrieval.indexRepository(repository.full_name, clonePath);
+      await this.contextRetrieval.indexRepository(repoFullName, clonePath);
       this.logger.log(`[${review.reviewId}] Indexed`);
+
+      // ── TRIAGE ──
       this.orchestrator.transition(review.reviewId, 'triage' as any);
-      this.logger.log(`[${review.reviewId}] Re-review pipeline initialized with custom prompt`);
+      const diff = await this.github.getPullRequestDiff(repository, review.prNumber);
+      const chunks = await this.diffParser.parseAndChunk(diff, { repoFullName, prNumber: review.prNumber });
+      this.logger.log(`[${review.reviewId}] Diff parsed: ${chunks.length} chunks`);
+
+      if (chunks.length === 0) {
+        this.logger.log(`[${review.reviewId}] No changes detected. Nothing to re-review.`);
+        this.orchestrator.transition(review.reviewId, 'verify' as any, { chunks: [], findings: [], processedFindings: [], diff });
+        this.orchestrator.transition(review.reviewId, 'pending_review' as any);
+        this.orchestrator.transition(review.reviewId, 'done' as any);
+        return;
+      }
+
+      // ── STATIC FILTERS ──
+      this.logger.log(`[${review.reviewId}] Running static pre-filters...`);
+      const filterResults = await this.staticFilters.runAll(chunks, diff);
+      this.logger.log(`[${review.reviewId}] Static filters: ${filterResults.findings.length} findings`);
+
+      // ── CONTEXT RETRIEVAL ──
+      this.logger.log(`[${review.reviewId}] Retrieving repository context...`);
+      const retrievalContext = await this.contextRetrieval.retrieveContext(chunks, repoFullName);
+
+      // ── LLM REVIEW ──
+      this.orchestrator.transition(review.reviewId, 'deep_review' as any);
+      this.logger.log(`[${review.reviewId}] Starting LLM re-review (${chunks.length} chunks) with custom prompt...`);
+      const reviewOutput = await this.llmEngine.review({
+        chunks,
+        diff,
+        context: retrievalContext,
+        staticResults: filterResults,
+        config: { ...review.config, userPrompt },
+      });
+
+      const findings = reviewOutput.findings;
+      this.logger.log(`[${review.reviewId}] LLM re-review complete: ${findings.length} raw findings`);
+
+      // ── POST-PROCESS ──
+      this.logger.log(`[${review.reviewId}] Post-processing findings...`);
+      const processedFindings = await this.postProcessor.process(findings, {
+        repoFullName,
+        confidenceThreshold: parseFloat(process.env.CONFIDENCE_THRESHOLD || '0.70'),
+        maxComments: 50,
+      });
+      this.logger.log(`[${review.reviewId}] After post-processing: ${processedFindings.length} findings`);
+
+      // Store findings in the review context
+      this.orchestrator.transition(review.reviewId, 'verify' as any, {
+        chunks,
+        findings,
+        processedFindings,
+        diff,
+      });
+
+      // Move to pending_review then done
+      this.orchestrator.transition(review.reviewId, 'pending_review' as any);
+      this.orchestrator.transition(review.reviewId, 'done' as any);
+
+      if (processedFindings.length === 0) {
+        this.logger.log(`[${review.reviewId}] Re-review complete! No issues found with custom instructions.`);
+      } else {
+        this.logger.log(`[${review.reviewId}] Re-review complete! Found ${processedFindings.length} issue(s) with custom instructions.`);
+      }
     } catch (error: any) {
       this.logger.error(`[${review.reviewId}] Direct re-review failed: ${error.message}`);
+      this.orchestrator.transition(review.reviewId, 'done' as any, { error: error.message });
     }
   }
 
