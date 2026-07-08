@@ -539,7 +539,8 @@ export class DashboardService {
     prNumber: number,
     prompt: string,
   ): Promise<{ reviewId: string; message: string }> {
-    const review = this.orchestrator.getReview(reviewId);
+    const resolvedId = this.resolveReviewId(reviewId);
+    const review = this.orchestrator.getReview(resolvedId);
     if (!review) {
       throw new Error(`Review ${reviewId} not found`);
     }

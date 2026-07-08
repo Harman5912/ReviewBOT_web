@@ -72,10 +72,16 @@ export class QueueService {
     jobId: string,
     priority?: number,
   ): Promise<void> {
-    await this.reviewQueue.add(jobName, data, {
-      jobId,
-      priority: priority || 5,
-    });
+    // Race the queue add against a timeout so we don't hang when Redis is unavailable
+    await Promise.race([
+      this.reviewQueue.add(jobName, data, {
+        jobId,
+        priority: priority || 5,
+      }),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Queue add timeout — Redis unavailable')), 5000),
+      ),
+    ]);
     this.logger.log(`Enqueued ${jobName} job: ${jobId}`);
   }
 
